@@ -1,0 +1,28 @@
+﻿@Model daytasks.Models.Student
+@{
+    ViewBag.Title = "task1";
+}
+
+<h2>task1</h2>
+<table class="table table-hover table-responsive">
+    <thead>
+        <tr>
+            <th scope="col">Student ID</th>
+            <th scope="col">Student Name</th>
+            <th scope="col">Student Major</th>
+            <th scope="col">Student Faculity</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <th scope="row">@i.Id</th>
+                <td>@i.Name</td>
+                <td>@i.Major</td>
+                <td>@i.Faculity</td>
+            </tr>
+        }
+        </tbody>
+</table>
