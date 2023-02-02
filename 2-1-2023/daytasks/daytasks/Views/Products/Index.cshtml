@@ -7,45 +7,81 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="Create" target="_blank" class="btn btn-primary">
+
+        <span class="glyphicon glyphicon-plus"></span>
+        Add New Product
+
+    </a>
 </p>
 <table class="table table-hover table-responsive">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ProductName)
+            Product Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UnitPrice)
+            Unit Price
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UnitsinStock)
+            Units in Stock
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Category.CategoryName)
+            Category Name
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UnitPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UnitsinStock)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category.CategoryName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Productid },new { @class = "btn btn-success" }) 
-            @Html.ActionLink("Details", "Details", new { id=item.Productid }, new { @class = "btn btn-info" }) 
-            @Html.ActionLink("Delete", "Delete", new { id=item.Productid }, new { @class = "btn btn-danger" })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.ProductName
+            </td>
+            <td>
+                @item.UnitPrice
+                $
+            </td>
+            <td>
+                @item.UnitsinStock
+            </td>
+            <td>
+                @item.Category.CategoryName
+            </td>
+            <td>
+            @*@Html.ActionLink("Edit", "Edit", , new { @class = "btn btn-success" })*@
+            <a href="Edit/@item.Productid" class="btn btn-success">
+
+                <span class="glyphicon glyphicon-edit"></span>
+                Edit
+
+            </a>
+            @*@Html.ActionLink("Details", "Details", , new { @class = "btn btn-info" })
+                @Html.ActionLink("Delete", "Delete",, new { @class = "btn btn-danger" })*@
+            <a href="Details/@item.Productid" class="btn btn-info">
+
+                <span class="glyphicon glyphicon-arrow-right"></span>
+                Details
+            </a>
+
+            <a href="Delete/@item.Productid" class="btn btn-danger">
+
+                <span class="glyphicon glyphicon-remove"></span>
+                Delete
+            </a>
+
+ <a href="Edit/Categories/@item.categoryid" class="btn btn-primary">
+
+                <span class="glyphicon glyphicon-edit"></span>
+                Edit Category
+            </a>
+
+            </td>
+        </tr>
+    }
 
 </table>
+<a href="@Url.Action("Index","Categories")" class="btn btn-primary">
+
+    <span class="glyphicon glyphicon-hd-video"></span>
+    All Categories
+</a>

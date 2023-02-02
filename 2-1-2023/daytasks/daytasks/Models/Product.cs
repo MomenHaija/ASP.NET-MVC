@@ -11,15 +11,27 @@ namespace daytasks.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Product
     {
+        [DisplayName("Product ID")]
         public int Productid { get; set; }
+        [DisplayName("Product Name")]
+        [Required]
+        [StringLength(15,MinimumLength =8,ErrorMessage ="The Length must between the 8 and 15")]
         public string ProductName { get; set; }
+
+        [DisplayName("Category ID")]
         public Nullable<int> categoryid { get; set; }
+        [DisplayName("Price")]
+        [Required]
+        [Range(10,1000,ErrorMessage ="The price should beteen the 10 and 1000")]
         public Nullable<double> UnitPrice { get; set; }
+        [DisplayName("Number of units")]
         public Nullable<int> UnitsinStock { get; set; }
-    
+        [DisplayName("Category Name")]    
         public virtual Category Category { get; set; }
     }
 }

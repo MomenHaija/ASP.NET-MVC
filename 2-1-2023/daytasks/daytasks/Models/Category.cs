@@ -11,7 +11,8 @@ namespace daytasks.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class Category
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,8 +20,9 @@ namespace daytasks.Models
         {
             this.Products = new HashSet<Product>();
         }
-    
+        [DisplayName("Category ID")]
         public int Categoryid { get; set; }
+        [DisplayName("Category Name")]
         public string CategoryName { get; set; }
         public string Description { get; set; }
     
