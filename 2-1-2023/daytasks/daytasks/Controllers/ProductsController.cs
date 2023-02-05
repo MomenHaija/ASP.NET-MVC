@@ -20,6 +20,13 @@ namespace daytasks.Controllers
             var products = db.Products.Include(p => p.Category);
             return View(products.ToList());
         }
+        [HttpPost]
+        public ActionResult Index(string pname)
+        {
+            var products = db.Products.Include(p => p.Category).Where(p => p.ProductName.Contains(pname));
+            return View(products.ToList());
+        }
+
 
         // GET: Products/Details/5
         public ActionResult Details(int? id)

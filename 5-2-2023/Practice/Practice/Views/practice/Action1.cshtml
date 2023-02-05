@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Action1";
+}
+
+<h2>Action1</h2>
+
+<input type="button" value="Welcome" onclick="location.href='@Url.Action("Action2", "practice")'" />
+<form action="#">
+    <input type="button" value="About" onclick="location.href='@Url.Action("About", "Home")'" />
+    <br />
+    <input type="button" value="Home" onclick="location.href='@Url.Action("Index", "Home")'" />
+</form>
+<a href="/Home/Contact">
+    <input type="button" value="Contact" />
+</a>
+

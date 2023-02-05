@@ -6,26 +6,32 @@
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm())
-{
+<form method="post">
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Product</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Productid)
+        @*@Html.HiddenFor(model => model.Productid)*@
+        <input data-val="true" data-val-number="The field Product ID must be a number." data-val-required="The Product ID field is required." id="Productid" name="Productid" type="hidden" value="@Model.Productid" />
+
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })
+            @*@Html.LabelFor(model => model.ProductName, htmlAttributes: new { @ })*@
+            <label for="ProductName" class="control-label col-md-2">Product Name</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })*@
+                <input class="form-control text-box single-line" data-val="true" data-val-length="The Length must between the 8 and 15" data-val-length-max="15" data-val-length-min="8" data-val-required="The Product Name field is required." id="ProductName" name="ProductName" type="text" value="@Model.ProductName" />
+
                 @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.categoryid, "categoryid", htmlAttributes: new { @class = "control-label col-md-2" })
+            @*@Html.LabelFor(model => model., "categoryid", htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <label for="categoryid" class="control-label col-md-2">category Id</label>
+
             <div class="col-md-10">
                 @Html.DropDownList("categoryid", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.categoryid, "", new { @class = "text-danger" })
@@ -33,18 +39,27 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.UnitPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+            @*@Html.LabelFor(model => model., htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <label for="UnitPrice" class="control-label col-md-2">Unit Price</label>
+
             <div class="col-md-10">
-                @Html.EditorFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "form-control" } })*@
+                <input class="form-control text-box single-line" data-val="true" data-val-number="The field Price must be a number." data-val-range="The price should beteen the 10 and 1000" data-val-range-max="1000" data-val-range-min="10" data-val-required="The Price field is required." id="UnitPrice" name="UnitPrice" type="text" value="@Model.UnitPrice" />
+
                 @Html.ValidationMessageFor(model => model.UnitPrice, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.UnitsinStock, htmlAttributes: new { @class = "control-label col-md-2" })
+            @*@Html.LabelFor(model => model., htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <label for="UnitsinStock" class="control-label col-md-2">Number of Units in Stock</label>
+
             <div class="col-md-10">
-                @Html.EditorFor(model => model.UnitsinStock, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.UnitsinStock, new { htmlAttributes = new { @class = "form-control" } })*@
+                <input class="form-control text-box single-line" data-val="true" data-val-length="The Length must between the 8 and 15" data-val-length-max="15" data-val-length-min="8" data-val-required="The Product Name field is required." id="ProductName" name="ProductName" type="text" value="@Model.UnitsinStock" />
                 @Html.ValidationMessageFor(model => model.UnitsinStock, "", new { @class = "text-danger" })
+
+
             </div>
         </div>
 
@@ -54,8 +69,11 @@
             </div>
         </div>
     </div>
-}
+</form>
 
 <div>
-    @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-success" } )
+    @*@Html.ActionLink("Back to List", "Index", new { @class = "btn btn-success" } )*@
+    <a href="/Products">
+        Back to List
+    </a>
 </div>

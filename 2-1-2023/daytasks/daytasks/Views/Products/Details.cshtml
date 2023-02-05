@@ -11,40 +11,51 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.ProductName)
+            @*@Html.DisplayNameFor(model => model.ProductName)*@
+            product Name
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ProductName)
+            @*@Html.DisplayFor(model => model.ProductName)*@
+            @Model.ProductName
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.UnitPrice)
+            @*@Model.UnitPrice*@
+            Unit Price
+            @*@Html.DisplayNameFor(model => model.UnitPrice)*@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.UnitPrice)
+            @*@Html.DisplayFor(model => model.UnitPrice)*@
+            @Model.UnitPrice
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.UnitsinStock)
+            @*@Html.DisplayNameFor(model => model.UnitsinStock)*@
+            Number of unit in stock
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.UnitsinStock)
+            @*@Html.DisplayFor(model => model.UnitsinStock)*@
+            @Model.UnitsinStock
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Category.CategoryName)
+            @*@Html.DisplayNameFor(model => model.Category.CategoryName)*@
+            Category Name
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Category.CategoryName)
+            @*@Html.DisplayFor(model => model.Category.CategoryName)*@
+            @Model.Category.CategoryName
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Productid }, new { @class = "btn btn-primary" }) |
-    @Html.ActionLink("Back to List", "Index")
+    @*@Html.ActionLink("Edit", "Edit", new { id = }, new { @class = "" }) |*@
+   <a href="Edit/Products/@Model.Productid " class="btn btn-primary">Edit</a>
+    @*@Html.ActionLink("", " ")*@
+<a href="Index">Back to List</a>
 </p>

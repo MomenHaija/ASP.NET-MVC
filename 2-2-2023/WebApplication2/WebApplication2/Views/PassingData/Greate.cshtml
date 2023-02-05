@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Greate";
+}
+<h2>Greate</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label id="categoryID">Category ID</label>
+        <input type="number" class="form-control" name="id" value=@ViewBag.id />
+    </div>
+    <div class="form-group">
+        <label id="categoryName">Category Name</label>
+        <input type="text" class="form-control" name="categoryName" value=@ViewBag.categoryName />
+    </div>
+    <input type="submit" value="Greate" class="btn btn-success" />
+</form>
