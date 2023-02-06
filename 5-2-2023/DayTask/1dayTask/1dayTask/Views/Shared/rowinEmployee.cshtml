@@ -1,0 +1,47 @@
+﻿@model _1dayTask.Models.Employee
+
+@{
+    ViewBag.Title = "rowinEmployee";
+}
+<tr>
+    <td>
+        @Html.DisplayFor(model => model.First_Name)
+    </td>
+    <td>
+        @Html.DisplayFor(model => model.Last_name)
+    </td>
+    <td>
+        @Html.DisplayFor(model => model.E_mail)
+    </td>
+    <td>
+        @Html.DisplayFor(model => model.Phone)
+    </td>
+    <td>
+        @Html.DisplayFor(model => model.Age)
+    </td>
+    <td>
+        @Html.DisplayFor(model => model.Job_Title)
+    </td>
+    <td>
+        @if (Model.Gender == true)
+        {
+            <span>Male</span>
+        }
+        else
+        {
+            <span>Female</span>
+        }
+    </td>
+    <td>
+        <img src="/@Model.picture" width="60px" height="60px" />
+    </td>
+    <td>
+        @*@Html.DisplayFor(modelItem => )*@
+        <a href="@Model.CV" download="@Model.CV">@Model.CV.Split('/')[2]</a>
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id }, new { @class = "btn btn-success" })
+        @Html.ActionLink("Details", "Details", new { id = Model.id }, new { @class = "btn btn-info" })
+        @Html.ActionLink("Delete", "Delete", new { id = Model.id }, new { @class = "btn btn-danger" })
+    </td>
+</tr>

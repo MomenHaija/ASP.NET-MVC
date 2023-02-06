@@ -26,5 +26,7 @@ namespace _1dayTask.Models
         }
     
         public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
     }
 }

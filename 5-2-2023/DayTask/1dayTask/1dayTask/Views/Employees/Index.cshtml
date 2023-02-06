@@ -4,25 +4,36 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-@using (Html.BeginForm())
-{
-    <input type="radio" name="searchtype" value="1" />
-    <label>First Name</label>
-    <input type="radio" name="searchtype" value="2" />
-    <label>Last Name</label>
-    <input type="radio" name="searchtype" value="3" />
-    <label>Email</label>
-    <input type="text" name="searchtext" />
-    <input type="submit" value="Search" class="btn btn-primary" />
-}
+<p>
+    <h5>Last Order</h5>
+    <div>
+        @Html.Action("Lastorder")
+       @Html.ActionLink("Show all Orders","Index","Orders")
+    </div>
+</p>
+<h1>Customers</h1>
+
+    @using (Html.BeginForm())
+    {
+        <label>Search By:</label>
+        <input type="radio" name="searchtype" value="1" class="" />
+        <label>First Name</label>
+        <input type="radio" name="searchtype" value="2" />
+        <label>Last Name</label>
+        <input type="radio" name="searchtype" value="3" />
+        <label>Email</label><br />
+        <div style="display:flex;flex-direction:row;justify-content:center">
+            <input type="text" name="searchtext" class="form-control" />
+            <input type="submit" value="Search" class="btn btn-primary" />
+        </div>
+    }
 
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", null, htmlAttributes: new { @class = "btn btn-primary" })
 </p>
-<table class="table">
+<table class="table table-responsive table-hover table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.First_Name)
@@ -80,22 +91,22 @@
                 {
                     <span>Male</span>
                 }
-else
+                else
                 {
                     <span>Female</span>
                 }
             </td>
             <td>
-                <img src="../@item.picture" width="60px" height="60px" />
+                <img src="/@item.picture" width="60px" height="60px" />
             </td>
             <td>
                 @*@Html.DisplayFor(modelItem => )*@
-                <a href="@item.CV" download="@item.CV">@item.CV</a>
+                <a href="@item.CV" download="@item.CV">@item.CV.Split('/')[2]</a>
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "btn btn-success" })
+                @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
             </td>
         </tr>
     }

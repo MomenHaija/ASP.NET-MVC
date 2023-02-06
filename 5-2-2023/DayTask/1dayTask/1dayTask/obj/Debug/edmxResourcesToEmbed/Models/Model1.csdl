@@ -14,8 +14,46 @@
     <Property Name="Gender" Type="Boolean" />
     <Property Name="picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="CV" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Orders" Relationship="TaskTwoMVCModel.FK__Orders__Customer__49C3F6B7" FromRole="Employee" ToRole="Order" />
   </EntityType>
   <EntityContainer Name="TaskTwoMVCEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="sysdiagrams" EntityType="TaskTwoMVCModel.sysdiagram" />
+    <EntitySet Name="Orders" EntityType="TaskTwoMVCModel.Order" />
+    <AssociationSet Name="FK__Orders__Customer__49C3F6B7" Association="TaskTwoMVCModel.FK__Orders__Customer__49C3F6B7">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Orderid" />
+    </Key>
+    <Property Name="Orderid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Customerid" Type="Int32" Nullable="false" />
+    <Property Name="Orderdate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Employee" Relationship="TaskTwoMVCModel.FK__Orders__Customer__49C3F6B7" FromRole="Order" ToRole="Employee" />
+  </EntityType>
+  <Association Name="FK__Orders__Customer__49C3F6B7">
+    <End Type="TaskTwoMVCModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="TaskTwoMVCModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Customerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -11,18 +11,49 @@ namespace _1dayTask.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Employee
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Employee()
+        {
+            this.Orders = new HashSet<Order>();
+        }
+    
         public int id { get; set; }
+        [Required]
+        [StringLength(12, ErrorMessage = "The MAx length of Name is 12 characters")]
+        [DisplayName("First Name")]
         public string First_Name { get; set; }
+        [DisplayName("Last Name")]
+        [Required]
+        [StringLength(12, ErrorMessage = "The MAx length of Name is 12 characters")]
         public string Last_name { get; set; }
+        [DisplayName("Email")]
+
+        [Required]
+        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$", ErrorMessage = "The Email is invalid")]
         public string E_mail { get; set; }
+        [DisplayName("Phone")]
+        [Required]
+        [RegularExpression(@"^(0)?[7]{1}[8|9|7]{1}[0-9]{7}$", ErrorMessage = "The Phone Number is invalid")]
         public string Phone { get; set; }
+        [Range(18, 50, ErrorMessage = "The Age Must Between the 18 and 50")]
+        [DisplayName("Age")]
         public Nullable<int> Age { get; set; }
+        [DisplayName("Job Title")]
         public string Job_Title { get; set; }
+        [Required]
+        [StringLength(12, ErrorMessage = "The Max Length for job title is 12 charaters")]
+        [DisplayName("Job Title")]
         public Nullable<bool> Gender { get; set; }
+        [DisplayName("Image")]
         public string picture { get; set; }
         public string CV { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }
