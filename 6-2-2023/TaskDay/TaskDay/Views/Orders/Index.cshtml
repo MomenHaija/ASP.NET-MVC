@@ -1,0 +1,40 @@
+﻿@model IEnumerable<TaskDay.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<br />
+<p>
+    @Html.ActionLink("Create New", "Create", null, null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-hover table-striped table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Orderdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.First_Name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Orderdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.First_Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Orderid }, new { @class = "btn btn-success" })
+                @Html.ActionLink("Details", "Details", new { id = item.Orderid }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Orderid }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.ActionLink("Back to list", "Index", "Employees", null, new { @class = "btn btn-primary" })

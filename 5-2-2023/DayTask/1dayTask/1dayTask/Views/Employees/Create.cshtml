@@ -70,7 +70,7 @@
 
                     @*@Html.EditorFor(model => model.Gender)*@
                     <select name="Gender">
-                        <option value="false">Female</option>
+                        <option value="false" class="form-control">Female</option>
                         <option value="true">male</option>
                     </select>
                     @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
